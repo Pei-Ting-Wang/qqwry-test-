@@ -1,0 +1,27 @@
+name: Download qqwry.dat
+
+on:
+    schedule:
+        - cron: '0 0 * * *' # 每天 UTC 時間的午夜觸發
+
+jobs:
+    download:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Download qqwry.dat
+              run: |
+                  wget -O qqwry.dat https://github.com/FW27623/qqwry/raw/master/qqwry.dat
+
+            - name: Commit changes
+              env:
+                  GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
+                  GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
+              run: |
+                  git config user.name $GIT_USERNAME
+                  git config user.email $GIT_EMAIL
+                  git add qqwry.dat
+                  git commit -m "Update qqwry.dat"
+                  git push origin main
