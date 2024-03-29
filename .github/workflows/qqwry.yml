@@ -14,10 +14,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Delete existing qqwry.dat
-        run: |
-          rm -f qqwry.dat
-
       - name: Download new qqwry.dat
         run: |
           wget -O qqwry.dat https://raw.githubusercontent.com/FW27623/qqwry/main/qqwry.dat
@@ -28,10 +24,10 @@ jobs:
           GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
         run: |
           mkdir -p data
-          mv qqwry.dat data/qqwry.dat  
+          mv qqwry.dat data/qqwry.dat
+          touch data/qqwry.dat 
           git config --global user.email "${GIT_EMAIL}"
           git config --global user.name "${GIT_USERNAME}"
           git add data/qqwry.dat
-          git status  # 確認檔案狀態
           git commit -m "Update qqwry.dat"
-          git push origin main --force
+          git push origin main
