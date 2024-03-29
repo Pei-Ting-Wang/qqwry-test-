@@ -17,17 +17,13 @@ jobs:
             - name: Download qqwry.dat
               run: |
                   wget -O qqwry.dat https://raw.githubusercontent.com/FW27623/qqwry/main/qqwry.dat
-
-            - name: Set workspace directory
-              run: |
-                  mkdir test  
-                  mv * test  
-                  cd test
+                  
             - name: Copy qqwry.dat to repository
               env:
                   GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
                   GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
               run: |
+                  mv qqwry.dat data/qqwry.dat  
                   git remote -v
                   git add qqwry.dat
                   git commit -m "update qqwry.dat"
