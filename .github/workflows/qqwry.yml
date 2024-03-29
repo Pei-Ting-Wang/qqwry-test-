@@ -26,3 +26,6 @@ jobs:
                   pwd ls
                   dir qqwry.dat
                   git config --global user.email "peiting0210@gmail.com"
+                  git config --global user.name "Pei-Ting-Wang"
+                  git remote -v
+                  
