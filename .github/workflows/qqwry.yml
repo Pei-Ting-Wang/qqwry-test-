@@ -20,7 +20,7 @@ jobs:
 
             - name: Set workspace directory
               run: |
-                  mkdir my_folder
+                  mkdir test  
                   mv * test  
                   cd test
             - name: Copy qqwry.dat to repository
