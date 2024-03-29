@@ -1,25 +1,22 @@
-name: Download qqwry.dat
+name: Simple GitHub Action
 
 on:
+    push:
+        branches:
+            - main
     workflow_dispatch:
+
 jobs:
-    download:
+    download_qqwry_dat:
         runs-on: ubuntu-latest
+
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v4
+              uses: actions/checkout@v2
 
             - name: Download qqwry.dat
               run: |
-                  wget -O qqwry.dat https://github.com/FW27623/qqwry/raw/master/qqwry.dat
+                  wget -O qqwry.dat https://raw.githubusercontent.com/FW27623/qqwry/main/qqwry.dat
 
-            - name: Commit changes
-              env:
-                  GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
-                  GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
-              run: |
-                  git config user.name $GIT_USERNAME
-                  git config user.email $GIT_EMAIL
-                  git add qqwry.dat
-                  git commit -m "Update qqwry.dat"
-                  git push origin main
+            - name: Copy qqwry.dat to repository
+              run: pwd
