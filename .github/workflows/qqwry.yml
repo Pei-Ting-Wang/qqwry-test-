@@ -25,5 +25,4 @@ jobs:
               run: |
                   pwd ls
                   dir qqwry.dat
-                  git config --global "${GIT_USERNAME}"
-                  git config --global "${GIT_EMAIL}"
+                  git config --global user.email "peiting0210@gmail.com"
