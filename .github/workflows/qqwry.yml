@@ -29,4 +29,4 @@ jobs:
           git config --global user.name "Pei-Ting-Wang"
           git add data/qqwry.dat
           git commit -m "update qqwry.dat"
-          git push origin main
+          git push origin main --force
