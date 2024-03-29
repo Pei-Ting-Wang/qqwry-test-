@@ -1,31 +1,30 @@
 name: Simple GitHub Action
 
 on:
-    push:
-        branches:
-            - main
-    workflow_dispatch:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-    download_qqwry_dat:
-        runs-on: ubuntu-latest
+  download_qqwry_dat:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-            - name: Download qqwry.dat
-              run: |
-                  wget -O qqwry.dat https://raw.githubusercontent.com/FW27623/qqwry/main/qqwry.dat
-                  
-            - name: Copy qqwry.dat to repository
-              env:
-                  GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
-                  GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
-              run: |
-                  mv qqwry.dat data/qqwry.dat  
-                  git remote -v
-                  git add qqwry.dat
-                  git commit -m "update qqwry.dat"
-                  git push
-                  
+      - name: Download qqwry.dat
+        run: |
+          wget -O qqwry.dat https://raw.githubusercontent.com/FW27623/qqwry/main/qqwry.dat
+          
+      - name: Copy qqwry.dat to repository
+        env:
+          GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
+          GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
+        run: |
+          mkdir -p data
+          mv qqwry.dat data/qqwry.dat  
+          git add data/qqwry.dat
+          git commit -m "update qqwry.dat"
+          git push origin main
