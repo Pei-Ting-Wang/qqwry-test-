@@ -23,7 +23,6 @@ jobs:
                   GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
                   GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
               run: 
-                  pwd
                   ls
                   git config --global $GIT_USERNAME
                   git config --global $GIT_EMAIL
