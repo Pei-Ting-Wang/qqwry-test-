@@ -1,9 +1,7 @@
 name: Download qqwry.dat
 
 on:
-    schedule:
-        - cron: '0 0 * * *' # 每天 UTC 時間的午夜觸發
-
+    workflow_dispatch:
 jobs:
     download:
         runs-on: ubuntu-latest
