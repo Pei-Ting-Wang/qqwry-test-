@@ -1,4 +1,4 @@
-name: Update ip list Action
+name: Simple GitHub Action
 
 on:
   push:
@@ -29,8 +29,9 @@ jobs:
         run: |
           mkdir -p data
           mv qqwry.dat data/qqwry.dat  
-          git config --global user.email "peiting0210@gmail.com"
-          git config --global user.name "Pei-Ting-Wang"
+          git config --global user.email "${GIT_EMAIL}"
+          git config --global user.name "${GIT_USERNAME}"
           git add data/qqwry.dat
+          git status  # 確認檔案狀態
           git commit -m "Update qqwry.dat"
           git push origin main --force
