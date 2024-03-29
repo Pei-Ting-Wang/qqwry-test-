@@ -19,4 +19,7 @@ jobs:
                   wget -O qqwry.dat https://raw.githubusercontent.com/FW27623/qqwry/main/qqwry.dat
 
             - name: Copy qqwry.dat to repository
-              run: pwd
+              run: 
+                  pwd
+                  git config --global user.name
+                  git config --global user.gmail
