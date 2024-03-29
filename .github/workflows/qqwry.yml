@@ -25,6 +25,8 @@ jobs:
         run: |
           mkdir -p data
           mv qqwry.dat data/qqwry.dat  
+          git config --global user.email "peiting0210@gmail.com"
+          git config --global user.name "Pei-Ting-Wang"
           git add data/qqwry.dat
           git commit -m "update qqwry.dat"
           git push origin main
