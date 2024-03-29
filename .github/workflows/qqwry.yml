@@ -23,6 +23,8 @@ jobs:
                   GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
                   GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
               run: 
+                  pwd
                   ls
+                  dir qqwry.dat
                   git config --global $GIT_USERNAME
                   git config --global $GIT_EMAIL
