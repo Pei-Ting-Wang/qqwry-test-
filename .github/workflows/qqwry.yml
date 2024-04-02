@@ -29,4 +29,6 @@ jobs:
           stat data/qqwry.dat
           touch data/qqwry.dat 
           stat data/qqwry.dat
-          
+          git add data/qqwry.dat
+          git commit -m "Update qqwry.dat"
+          git push origin main
