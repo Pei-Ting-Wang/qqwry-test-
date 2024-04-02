@@ -24,6 +24,7 @@ jobs:
           GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
         run: |
           mkdir -p data
+          rm data/qqwry.dat
           mv qqwry.dat data/qqwry.dat
           stat data/qqwry.dat
           touch data/qqwry.dat 
