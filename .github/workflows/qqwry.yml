@@ -24,15 +24,16 @@ jobs:
           GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
         run: |
           mkdir -p data
-          if [ -f "data/qqwry.dat" ]; then
-            rm data/qqwry.dat
-          fi
           mv qqwry.dat data/qqwry.dat
-          stat data/qqwry.dat
-          touch data/qqwry.dat 
-          stat data/qqwry.dat
-          git config --global user.email $GIT_USERNAME
-          git config --global user.name $GIT_EMAIL
-          git add data/qqwry.dat
-          git commit -m "Update qqwry.dat"
-          git push origin main
+          git config --global user.email $GIT_EMAIL
+          git config --global user.name $GIT_USERNAME
+          if [ -f "data/qqwry.dat" ]; then
+            git add data/qqwry.dat
+            # Only commit and push if there are changes
+            if ! git diff --cached --quiet; then
+              git commit -m "Update qqwry.dat"
+              git push origin main
+            fi
+          else
+            echo "qqwry.dat file not found. No changes to commit."
+          fi
